@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/sh
+##################################################
+##################### COLORS #####################
+G='\e[01;32m'           # GREEN TEXT
+R='\e[01;31m'           # RED TEXT
+Y='\e[01;33m'           # YELLOW TEXT
+B='\e[01;34m'           # BLUE TEXT
+V='\e[01;35m'           # VIOLET TEXT
+Bl='\e[01;30m'          # BLACK TEXT
+C='\e[01;36m'           # CYAN TEXT
+W='\e[01;37m'           # WHITE TEXT
+N='\e[0m'               # DEFAULT TEXT
+
+####### How to use: echo "${G}example${N}" #######
+##################################################
+if [[ -n $1 ]]; then
+        echo -en "\033]0;$@\a";
+        echo -e "Title set to:\n'${Y}$@${N}'";
+else
+        echo -en "\033]0; \a";
+        echo -e "Title unset";
+fi

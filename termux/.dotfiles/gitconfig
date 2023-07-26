@@ -1,0 +1,11 @@
+[user]
+    email = Jonas.Ned@outlook.com
+    name = Phate Valleyman
+[credential "https://github.com"]
+	helper = 
+	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+[init]
+	defaultBranch = master
