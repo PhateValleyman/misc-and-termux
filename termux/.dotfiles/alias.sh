@@ -3,6 +3,8 @@
 alias ls='/data/data/com.termux/files/usr/bin/ls -1a --color=tty --show-control-chars --quoting-style=shell --group-directories-first'
 alias lst='/data/data/com.termux/files/usr/bin/ls -1ac --color=tty --show-control-chars --quoting-style=shell'
 
+alias grep='/data/data/com.termux/files/usr/bin/grep --color=tty'
+
 alias ..='cd ..'
 alias ...='.. && ..'
 alias ....='... && ..'
@@ -12,16 +14,16 @@ alias rm='yes | rm -r -v'
 alias cp='cp -v -r'
 alias mv='mv -f -f'
 
-alias 'ts'='telnet 192.168.1.20'
+alias ts='telnet 192.168.1.20'
 
-alias 'tree'='tree -AC --dirsfirst'
+alias tree='tree -AC --dirsfirst'
 
-alias 'wol'='wol FC:F5:28:31:08:B1'
+alias wol='wol FC:F5:28:31:08:B1'
 
-alias 'pygmentize'='pygmentize -g'
+alias pygmentize='pygmentize -g'
 
 alias wget='wget --show-progress --continue'
-alias 'curl'='curl --progress-bar'
+alias curl='curl --progress-bar'
 
 alias reload='source /data/data/com.termux/files/usr/etc/profile'
 
