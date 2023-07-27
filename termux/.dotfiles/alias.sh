@@ -3,6 +3,9 @@
 alias ls='/data/data/com.termux/files/usr/bin/ls -1a --color=tty --show-control-chars --quoting-style=shell --group-directories-first'
 alias lst='/data/data/com.termux/files/usr/bin/ls -1ac --color=tty --show-control-chars --quoting-style=shell'
 
+alias lsd='/data/data/com.termux/files/usr/bin/lsd -1a --group-directories-first'
+alias logo-ls='/data/data/com.termux/files/usr/bin/logo-ls -1a'
+
 alias grep='/data/data/com.termux/files/usr/bin/grep --color=tty'
 
 alias ..='cd ..'

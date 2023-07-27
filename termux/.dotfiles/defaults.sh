@@ -9,6 +9,8 @@ export NANORC=/data/data/com.termux/files/usr/etc/nanorc
 
 export EDITOR=nano
 
+export PROGRESS_ARGS='-M'
+
 export PATH=$PATH:/data/data/com.termux/files/home/go/bin
 
 export PATH=$PATH:/data/data/com.termux/files/home/.local/bin
