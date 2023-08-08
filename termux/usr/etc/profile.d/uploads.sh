@@ -1,28 +1,60 @@
 #!/data/data/com.termux/files/usr/bin/sh
 uploadserver ()
 {
-    if [[ -n $1 ]]; then
-        file=$1;
-    else
-        echo -e "Select file to upload:";
-        read -ei "" file;
-    fi;
-    echo -en "Select remote folder:\n";
-    read -ei "/ffp/home/root/" serverdir;
-    if [[ "$@" > 1 ]]; then
-        for f in "$@";
-        do
-            echo -en "\033]0;Uploading $f\a";
-            echo -en "Uploading $f to $serverdir";
-            scp -r -i $HOME/.ssh/server $f root@192.168.1.20:$serverdir;
-            echo -en "\n$file uploaded to $serverdir\n";
-        done;
-        echo -en "\033]0; \a";
-    else
-        echo -en "\033]0;Uploading $file\a";
-        echo -en "Uploading $file to $serverdir";
-        scp -r -i $HOME/.ssh/server $file root@192.168.1.20:$serverdir;
-        echo -en "\n$file uploaded to $serverdir\n";
-        echo -en "\033]0; \a";
-    fi
+	if [[ -n $1 ]]; then
+		file=$1;
+	else
+		echo -e "Select file to upload:";
+		read -ei "" file;
+	fi;
+	echo -en "Select remote folder:\n";
+	read -ei "/ffp/home/root/" serverdir;
+	if [[ "$@" > 1 ]]; then
+		for f in "$@";
+		do
+			echo -en "\033]0;Uploading $f\a";
+			echo -en "Uploading \e[01;36m$f\e[0m to \e[01;33m$serverdir\e[0m";
+			scp -r -F /data/data/com.termux/files/home/.ssh/config -i /data/data/com.termux/files/home/.ssh/server $f root@192.168.1.20:$serverdir && echo -e "\n\e[01;36m$f\e[0m\n\e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n\n" || echo -e "\n\e[01;36m$f\e[0m\n\e[01;31mfailed\e[0m to upload to \e[01;33m$serverdir\e[0m\n\n";
+			#scp -r -i $HOME/.ssh/server $f root@192.168.1.20:$serverdir;
+			#echo -en "\n$file \e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n";
+		done;
+		echo -en "\033]0; \a";
+	else
+		echo -en "\033]0;Uploading $f\a";
+		echo -en "Uploading \e[01;36m$f\e[0m to \e[01;33m$serverdir\e[0m";
+		scp -r -F /data/data/com.termux/files/home/.ssh/config -i /data/data/com.termux/files/home/.ssh/server $f root@192.168.1.20:$serverdir && echo -e "\n\e[01;36m$f\e[0m\n\e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n\n" || echo -e "\n\e[01;36m$f\e[0m\n\e[01;31mfailed\e[0m to upload to \e[01;33m$serverdir\e[0m\n\n";
+		#scp -r -i $HOME/.ssh/server $file root@192.168.1.20:$serverdir;
+		#echo -en "\n$file \e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n";
+		echo -en "\033]0; \a";
+	fi
 }
+
+#upload-server ()
+#{
+#	if [[ -n $1 ]]; then
+#		file=$1;
+#	else
+#		echo -e "Select file to upload:";
+#		read -ei "" file;
+#	fi;
+#	echo -en "Select remote folder:\n";
+#	read -ei "/ffp/home/root/" serverdir;
+#	if [[ "$@" > 1 ]]; then
+#		for f in "$@";
+#		do
+#			echo -en "\033]0;Uploading $f\a";
+#			echo -en "Uploading \e[01;36m$f\e[0m to \e[01;33m$serverdir\e[0m";
+#			su -c BIND_INTERFACE=wlan0 DNS_OVERRIDE_IP=8.8.8.8 LD_PRELOAD=/system/lib/bindToInterface.so /data/data/com.termux/files/usr/bin/scp -r -F /data/ssh/root/.ssh/config -i /data/ssh/root/.ssh/server $f root@192.168.1.20:$serverdir && echo -e "\n\e[01;36m$f\e[0m\n\e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n\n" || echo -e "\n\e[01;36m$f\e[0m\n\e[01;31mfailed\e[0m to upload to \e[01;33m$serverdir\e[0m\n\n";
+#			#scp -r -i $HOME/.ssh/server $f root@192.168.1.20:$serverdir;
+#			#echo -en "\n$file \e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n";
+#		done;
+#		echo -en "\033]0; \a";
+#	else
+#		echo -en "\033]0;Uploading $f\a";
+#		echo -en "Uploading \e[01;36m$f\e[0m to \e[01;33m$serverdir\e[0m";
+#		su -c BIND_INTERFACE=wlan0 DNS_OVERRIDE_IP=8.8.8.8 LD_PRELOAD=/system/lib/bindToInterface.so /data/data/com.termux/files/usr/bin/scp -r -F /data/ssh/root/.ssh/config -i /data/ssh/root/.ssh/server $f root@192.168.1.20:$serverdir && echo -e "\n\e[01;36m$f\e[0m\n\e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n\n" || echo -e "\n\e[01;36m$f\e[0m\n\e[01;31mfailed\e[0m to upload to \e[01;33m$serverdir\e[0m\n\n";
+#		#scp -r -i $HOME/.ssh/server $file root@192.168.1.20:$serverdir;
+#		#echo -en "\n$file \e[01;32muploaded\e[0m to \e[01;33m$serverdir\e[0m\n";
+#		echo -en "\033]0; \a";
+#	fi
+#}
